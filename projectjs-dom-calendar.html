@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calendar</title>
+    <style>
+        table {
+            width: 50%;
+            position: relative;
+            left: 0.3%;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid gray;
+            width: 14.2%;
+            height: 30px;
+            padding: 0;
+            background-color: white;
+            transition: background-color .7s;
+            text-align: center;
+            color: black;
+        }
+        .current {
+            background-color: white;
+        }
+        .today{
+            background-color: red;
+        }
+        .previous, .next {
+            background-color: #f2f2f2;
+        }
+        #datepicker {
+            width: 350px;
+            border: 1px solid black;
+            border-collapse: collapse;
+            background-color: black;
+        };
+    </style>
+</head>
+<body>
+    <script src="projectjs-dom-calendar.js"></script>
+    <script src="vCalendar.js"></script>
+    <script>
+        calendar(library);
+    </script>
+    <script>
+        calendar(library);
+        $("#calendar").on("click", "td", function() {
+          var text = $( this ).text();
+          var date = text.substring(0,2);
+          var hour = text.substring(2, 5);
+          var description = text.substring(5);
+
+          if(!hour && !description) {
+            alert('The Date is: ' + date + 'th, ' + 'there are no events for this day');
+          } else {
+              alert('Date: ' + date + 'th, Hour of Event: ' + hour + ', Description: ' + description);
+          }
+          //alert($( this ).text());
+        });
+    </script>
+</body>
+</html>
